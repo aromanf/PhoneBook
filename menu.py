@@ -1,14 +1,26 @@
-phone_book = {'Antonio Roman': {'name': 'Antonio Roman', 'phone': '783-544-5393'},
-              'John Lewi': {'name': 'John Lewi', 'phone': '434-543-5124'}}
+import json
+
+
+def save_book() :
+    with open('data_file.json', 'w') as write_file:
+        json.dump(phone_book, write_file)
+
+
+def load_book() :
+    with open("data_file.json", "r") as read_file:
+        data = json.load(read_file)
+        return data
 
 
 def add_contact():
     print('Add contact here')
 
 
-def search_contact(name) :
+def search_contact(name):
     return True
 
+
+phone_book = load_book()
 
 while True:
     print('--- Phone Book ----')
@@ -26,5 +38,6 @@ while True:
     elif option == '3':
         print(phone_book)
     elif option == '4':
+        save_book()
         print('Exiting program...')
         break
